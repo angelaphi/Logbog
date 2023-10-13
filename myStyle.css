@@ -1,0 +1,17 @@
+body {
+  background-color: rgb(227, 46, 218);
+}
+
+/* overskrift h1 design */
+h1{
+font-style: bold;
+font-size: 60px;
+}
+
+pre{
+  background-color: lightgray;
+}
+
+
+
+
