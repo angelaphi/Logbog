@@ -6,6 +6,22 @@
 <title>Stjerne siden</title>
 <style>
     h1 {text-align: center;}
+
+    * {
+  box-sizing: border-box;
+}
+
+.img-container {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 </style>
 </head>
 
@@ -23,7 +39,17 @@
 Mit navn er Angela Phikamphon. Jeg går i 2022j på ryssensteen. Jeg er meget bedere end Oskar, og min hjemmeside er 100 gange bedere. 
 </p>
 
-<img src="oskar.jpg" width=40% class="center">
+<div class="clearfix">
+    <div class="img-container">
+    <img src="oskar.jpg" alt="Italy" style="width:100%">
+    </div>
+    <div class="img-container">
+    <img src="klasse.jpg" alt="Forest" style="width:100%">
+    </div>
+    <div class="img-container">
+    <img src="selma.jpg" alt="Mountains" style="width:100%">
+    </div>
+  </div>
 
 <h2> links til projekter #do not need </h2>
 
