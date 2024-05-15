@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+<body> <!--Det man ser på hjemmesiden. bliver opdaterede løbende med knapperne-->
+<h1>Løs regnestykket</h1>
+<img id="myImage" src="billeder/matbillede.jpeg" style="width: 50%;">
+<p id="regnestykke"></p>
+<p id="resultat"></p>
+<button type="button" onclick="ny()">ny</button>
+<button type="button" onclick="svar()">svar</button>
+
+</body>
+</html> 
+
+<!--Relationsgraden er, 1:1, -->
+
+<script>
+    let x; //definere funktionerne
+    let mat;
+    let data;
+    var regnestykke = null
+    var resultat = null
+
+function ny() {
+  x = Math.floor(Math.random()*10+1); //tager et random tal mellem 1-5
+  genererTekst(x); //reference til vores funxtioen i linje 35, af x (vores random tal.) 
+  pic = "billeder/matbillede"+x+".jpeg"
+  document.getElementById('regnestykke').innerHTML = regnestykke; //det information vi får fra function i linje 35, bliver sat på hjemmesiden.
+  document.getElementById('resultat').innerHTML = "???";
+  document.getElementById('myImage').src = pic;
+  
+}
+
+function svar(){ //funtion hvis man skal have svar til regnestykket 
+    document.getElementById('resultat').innerHTML = resultat;
+
+}
+
+function genererTekst(x){ //function til få regnestykket
+  for (var i = 0; i < data.length; i++) { //i bliver støre hver gang indtil der ikke er mere data "i < data.length"
+      if (data[i]["ID"] == x) { //finder ID der passer til vores random x,
+        regnestykke = data[i]['regnestykke'];  //matcher x, med data
+        resultat = data[i]['resultat'];
+ 
+        break; // exit efter loop
+      }
+    }
+}
+//blackbox, bruger det til at indlæse vores data.
+window.onload = function() {
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "mat.csv", true); //referance til vores database. 
+xhr.responseType = "text";
+xhr.onload = function() {
+  data = Papa.parse(xhr.responseText, {
+    header: true // set this to true if the first row contains the header names
+  }).data;
+};
+xhr.send();
+}
+//slut på vores js script
+</script> 
